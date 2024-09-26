@@ -2,11 +2,12 @@ FROM maven:3-openjdk-17 as builder
 
 WORKDIR /tmp/app
 
-COPY target/blog-watcher-0.0.1.jar blog-watcher-0.0.1.jar
+ADD . .
 
-COPY .env .env
+RUN mvn package -Dmaven.test.skip
 
 EXPOSE 8081
 
+WORKDIR /tmp/app/target
 
 ENTRYPOINT ["java", "-jar", "blog-watcher-0.0.1.jar"]
