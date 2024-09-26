@@ -2,6 +2,7 @@ package com.github.blogwatcher.controller;
 
 import com.github.blogwatcher.model.event.ArticleEvent;
 import com.github.blogwatcher.service.ArticleEventService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -29,6 +30,7 @@ public class ArticleEventController {
     public ArticleEventController(ArticleEventService articleEventService) {
         this.articleEventService = articleEventService;
     }
+    @Operation(summary = "Get all events of articles in system")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successfully retrieved page of",
                     content = @Content(
